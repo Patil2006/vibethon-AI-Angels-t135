@@ -15,20 +15,16 @@ function Sidebar({ isOpen, onClose }) {
       {isOpen && <div className="sidebar-overlay" onClick={onClose} />}
       <aside className={`sidebar ${isOpen ? 'sidebar-open' : ''}`}>
         <div className="sidebar-header">
-          <span>Menu</span>
-          <button className="sidebar-close" onClick={onClose} aria-label="Close sidebar">✕</button>
+          <span>🤖 AI Playground</span>
+          <button className="sidebar-close" onClick={onClose}>✕</button>
         </div>
         <ul className="sidebar-nav">
           {navItems.map((item) => (
             <li key={item.to}>
-              <NavLink
-                to={item.to}
-                end={item.end}
+              <NavLink to={item.to} end={item.end}
                 className={({ isActive }) => isActive ? 'sidebar-link active' : 'sidebar-link'}
-                onClick={onClose}
-              >
-                <span className="sidebar-icon">{item.icon}</span>
-                {item.label}
+                onClick={onClose}>
+                <span className="sidebar-icon">{item.icon}</span>{item.label}
               </NavLink>
             </li>
           ))}

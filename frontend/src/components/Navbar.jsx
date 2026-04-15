@@ -6,10 +6,7 @@ function Navbar({ onMenuClick }) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
+  const handleLogout = () => { logout(); navigate('/login'); };
 
   return (
     <nav className="navbar">
@@ -25,7 +22,10 @@ function Navbar({ onMenuClick }) {
         <li><NavLink to="/game" className={({ isActive }) => isActive ? 'active' : ''}>Game</NavLink></li>
       </ul>
       <div className="navbar-user">
-        <span className="user-greeting">👤 {user?.username}</span>
+        <div className="user-badge">
+          <span className="user-dot" />
+          {user?.username}
+        </div>
         <button className="btn-logout" onClick={handleLogout}>Logout</button>
       </div>
     </nav>
