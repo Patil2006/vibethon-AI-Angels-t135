@@ -1,38 +1,31 @@
+"""
+AI Playground - FastAPI Backend
+Entry point: registers all routers and configures CORS + Swagger.
+"""
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from routes import learn, quiz, profile
 
-app = FastAPI(title="AI Playground API")
+app = FastAPI(
+    title="AI Playground API",
+    description="Backend for the AI Learning Platform — Learn, Quiz, and Profile management.",
+    version="1.0.0",
+)
 
+# Allow React frontend on localhost:3001
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=["http://localhost:3000", "http://localhost:3001"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
-@app.get("/")
-def root():
-    return {"message": "AI Playground API is running"}
-
-
-@app.get("/api/topics")
-def get_topics():
-    return [
-        {"id": 1, "title": "ML Basics", "tag": "Beginner", "icon": "🧠",
-         "description": "Understand what machine learning is and where it's used."},
-        {"id": 2, "title": "Data Handling", "tag": "Intermediate", "icon": "📊",
-         "description": "Learn how to collect, clean, and prepare data."},
-        {"id": 3, "title": "Models", "tag": "Intermediate", "icon": "🤖",
-         "description": "Explore decision trees, neural networks, and more."},
-    ]
+# Register route modules
+app.include_router(learn.router)
+app.include_router(quiz.router)
+app.include_router(profile.router)
 
 
-@app.get("/api/stats")
-def get_stats():
-    return {
-        "topics_completed": 0,
-        "quiz_score": 0,
-        "games_played": 0,
-        "streak_days": 1,
-    }
+@app.get("/", tags=["Health"])
+async def root():
+    return {"status": "ok", "message": "AI Playground API is running 🚀"}

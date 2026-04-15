@@ -423,3 +423,248 @@ body {
     padding: 28px 16px;
   }
 }
+
+/* ── Login Page ── */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  padding: 20px;
+}
+
+.login-card {
+  background: white;
+  border-radius: 16px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.login-logo {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: #1a202c;
+  margin-bottom: 6px;
+}
+
+.login-subtitle {
+  color: #718096;
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+}
+
+.login-form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.form-group input {
+  padding: 11px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #2d3748;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #3182ce;
+}
+
+.login-error {
+  color: #e53e3e;
+  font-size: 0.85rem;
+  background: #fff5f5;
+  border: 1px solid #fed7d7;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+.login-hint {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #a0aec0;
+}
+
+/* ── Navbar user area ── */
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-greeting {
+  color: #a0aec0;
+  font-size: 0.85rem;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1.5px solid #4a5568;
+  color: #a0aec0;
+  padding: 5px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-logout:hover {
+  border-color: #63b3ed;
+  color: #63b3ed;
+}
+
+@media (max-width: 640px) {
+  .user-greeting {
+    display: none;
+  }
+
+  .login-card {
+    padding: 36px 24px;
+  }
+}
+
+/* ── Password input with eye toggle ── */
+.pw-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.pw-label-row label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.btn-generate {
+  background: none;
+  border: none;
+  color: #3182ce;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-generate:hover {
+  text-decoration: underline;
+}
+
+.pw-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pw-input-wrap input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+  color: #718096;
+  transition: color 0.2s;
+}
+
+.eye-btn:hover {
+  color: #3182ce;
+}
+
+/* ── Password suggestions ── */
+.pw-suggestions {
+  background: #f7fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pw-suggestions-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #718096;
+  margin: 0 0 4px;
+}
+
+.pw-suggestion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.pw-suggestion-item code {
+  font-size: 0.82rem;
+  color: #2d3748;
+  background: #edf2f7;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  word-break: break-all;
+}
+
+.pw-suggestion-item button {
+  background: #3182ce;
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 5px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.pw-suggestion-item button:hover {
+  background: #2b6cb0;
+}
+
+.pw-copied {
+  font-size: 0.82rem;
+  color: #38a169;
+  margin: 0;
+}
