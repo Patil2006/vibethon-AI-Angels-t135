@@ -4,7 +4,7 @@ Entry point: registers all routers and configures CORS + Swagger.
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import learn, quiz, profile, ml
+from routes import learn, quiz, profile, ml, game, history
 
 app = FastAPI(
     title="AI Playground API",
@@ -25,6 +25,8 @@ app.include_router(learn.router)
 app.include_router(quiz.router)
 app.include_router(profile.router)
 app.include_router(ml.router)
+app.include_router(game.router)
+app.include_router(history.router)
 
 
 @app.get("/", tags=["Health"])

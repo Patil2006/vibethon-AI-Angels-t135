@@ -13,7 +13,7 @@ function Quiz() {
 
   const handleSelect = (i) => { if (selected === null) setSelected(i); };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     const isCorrect = selected === q.correct;
     const newAnswers = [...answers, { correct: isCorrect, selected, question: q.question, explanation: q.explanation }];
     setAnswers(newAnswers);
@@ -21,7 +21,15 @@ function Quiz() {
       setCurrent(current + 1);
       setSelected(null);
     } else {
+      const finalScore = newAnswers.filter(a => a.correct).length;
       setFinished(true);
+      try {
+        await fetch('http://localhost:8000/api/history/quiz', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: 'Player', score: finalScore, total: quizQuestions.length, percentage: Math.round((finalScore / quizQuestions.length) * 100) }),
+        });
+      } catch {}
     }
   };
 
